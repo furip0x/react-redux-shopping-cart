@@ -7,7 +7,8 @@ import {
   increaseItemQuantity,
   decreaseItemQuantity,
   getTotals,
-} from '../slices/productsSlice'
+} from '../../slices/productsSlice'
+import styles from './cart.module.css'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -43,26 +44,26 @@ const Cart = () => {
         <div className='cart'>
           {cart.map((item) => {
             return (
-              <div key={item.id} className='cart-item'>
-                <div className='cart-item-img'>
+              <div key={item.id} className={styles.cartItem}>
+                <div className={styles.cartItemImg}>
                   <img src={item.image} alt={item.name} />
                 </div>
-                <div className='cart-item-detail'>
-                  <h2 className='cart-item-title'>{item.name}</h2>
-                  <div className='cart-item-price'>${item.price}</div>
+                <div className={styles.cartItemDetail}>
+                  <h2 className={styles.cartItemTitle}>{item.name}</h2>
+                  <div className={styles.cartItemPrice}>${item.price}</div>
                 </div>
-                <div className='cart-item-amount'>
-                  <div className='cart-item-count'>
+                <div className={styles.cartItemAmount}>
+                  <div className={styles.cartItemCount}>
                     <button
-                      className='cart-item-count-btn'
+                      className={styles.cartItemCountBtn}
                       type='button'
                       onClick={() => decreaseQuantity(item.id)}
                     >
                       -
                     </button>
-                    <div className='cart-item-amount'>{item.quantity}</div>
+                    <div className={styles.cartItemAmount}>{item.quantity}</div>
                     <button
-                      className='cart-item-count-btn'
+                      className={styles.cartItemCountBtn}
                       type='button'
                       onClick={() => increaseQuantity(item.id)}
                     >
@@ -70,9 +71,9 @@ const Cart = () => {
                     </button>
                   </div>
                 </div>
-                <div className='cart-item-info'>
+                <div className={styles.cartItemInfo}>
                   <button
-                    className='cart-item-remove'
+                    className={styles.cartItemRemove}
                     type='button'
                     onClick={() => {
                       removeItemFromCart(item.id)
@@ -96,10 +97,10 @@ const Cart = () => {
             )
           })}
         </div>
-        <div className='cart-total'>
-          <div className='cart-total-price'>${cartTotalPrice}</div>
+        <div className={styles.cartTotal}>
+          <div className={styles.cartTotalPrice}>${cartTotalPrice}</div>
           <button
-            className='cart-total-clear'
+            className={styles.cartTotalClear}
             type='button'
             onClick={() => removeAllCartItems()}
           >
@@ -114,7 +115,7 @@ const Cart = () => {
         <div className='page-top'>
           <h1 className='page-title'>Your cart is empty</h1>
         </div>
-        <Link to='/' className='continue-link'>
+        <Link to='/' className={styles.continueLink}>
           Continue Shopping
         </Link>
       </div>

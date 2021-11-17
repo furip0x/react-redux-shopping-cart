@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addCartItem } from '../../slices/productsSlice'
 import { getTotals } from '../../slices/productsSlice'
+import styles from './products.module.css'
 
 const ProductItem = () => {
   const dispatch = useDispatch()
@@ -18,15 +19,15 @@ const ProductItem = () => {
 
   return products.map((product) => {
     return (
-      <div className='product-list-item' key={product.id}>
-        <div className='product-list-item-img'>
+      <div className={styles.productListItem} key={product.id}>
+        <div className={styles.productListItemImg}>
           <img src={product.image} alt={product.name} />
         </div>
-        <div className='product-list-item-detail'>
-          <h2 className='product-list-item-title'>{product.name}</h2>
-          <div className='product-list-item-price'>${product.price}</div>
+        <div className={styles.productListItemDetail}>
+          <h2 className={styles.productListItemTitle}>{product.name}</h2>
+          <div className={styles.productListItemPrice}>${product.price}</div>
           <button
-            className='product-list-item-btn'
+            className={styles.productListItemBtn}
             type='button'
             onClick={() => addToCart({ ...product })}
           >

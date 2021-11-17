@@ -1,0 +1,96 @@
+.mainHeader {
+  background-color: #f05455;
+  padding: 0.63rem 0;
+}
+
+.mainHeaderContent {
+  width: 100%;
+  max-width: 840px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  margin: 0 auto;
+}
+
+.logo {
+  flex: 0 0 max-content;
+}
+
+.logo a {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.headerMenu {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.mainNav ul {
+  display: flex;
+  align-items: center;
+}
+
+.mainNavLink {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  transition: 0.3s;
+}
+
+.mainNavLink:hover {
+  background-color: #720304;
+}
+
+.cartCount {
+  position: relative;
+}
+
+.cartCount svg {
+  width: 2rem;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.cartCount:hover svg {
+  color: #720304;
+}
+
+.amountContainer {
+  position: absolute;
+  top: -0.85rem;
+  right: -0.85rem;
+  width: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  font-size: 1.25rem;
+  color: #fff;
+  border-radius: 50%;
+  background: #720304;
+  transition: 0.3s;
+}
+
+.cartCount:hover .amountContainer {
+  color: #720304;
+  background-color: #fff;
+}
+
+@media (max-width: 575px) {
+  .logo a {
+    font-size: 1.2rem;
+  }
+  .mainNavLink {
+    font-size: 1rem;
+  }
+  .cartCount svg {
+    width: 1.5rem;
+  }
+}
