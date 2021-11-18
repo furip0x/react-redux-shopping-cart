@@ -1,5 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import { Slide } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 import Header from './Components/Header'
 import Home from './Pages/Home'
 import ShoppingCart from './Pages/ShoppingCart'
@@ -7,7 +10,7 @@ import ShoppingCart from './Pages/ShoppingCart'
 const App = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <div className='app-container'>
+      <div className='app-wrapper'>
         <Header />
         <main className='app-main'>
           <Switch>
@@ -15,6 +18,13 @@ const App = () => {
             <Route path='/cart' component={ShoppingCart}></Route>
           </Switch>
         </main>
+        <ToastContainer
+          position='top-center'
+          autoClose={1300}
+          draggable={false}
+          pauseOnHover={false}
+          transition={Slide}
+        />
       </div>
     </Router>
   )
