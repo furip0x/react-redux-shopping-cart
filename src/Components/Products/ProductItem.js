@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCartItem } from '../../slices/productsSlice'
-import { getTotals } from '../../slices/productsSlice'
+import { addCartItem, getTotals } from '../../slices/productsSlice'
 
 const ProductItem = () => {
   const dispatch = useDispatch()
@@ -20,11 +20,16 @@ const ProductItem = () => {
     return (
       <div className='product-list-item' key={product.id}>
         <div className='product-list-item-img'>
-          <img src={product.image} alt={product.name} />
+          <Link to={`/product/${product.id}`}>
+            <img src={product.image} alt={product.name} />
+            <div className='image-overlay'>see details</div>
+          </Link>
         </div>
         <div className='product-list-item-detail'>
-          <h2 className='product-list-item-title'>{product.name}</h2>
-          <div className='product-list-item-price'>${product.price}</div>
+          <Link to={`/product/${product.id}`}>
+            <h2 className='product-list-item-title'>{product.name}</h2>
+            <div className='product-list-item-price'>${product.price}</div>
+          </Link>
           <button
             className='product-list-item-btn'
             type='button'

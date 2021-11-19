@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.min.css'
 import Header from './Components/Header'
 import Home from './Pages/Home'
 import ShoppingCart from './Pages/ShoppingCart'
+import ProductDetail from './Pages/ProductDetail'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route path='/cart' component={ShoppingCart}></Route>
+            <Route path='/product/:id' component={ProductDetail}></Route>
           </Switch>
         </main>
         <ToastContainer
