@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
-import Header from './Components/Header'
+import Header from './Components/Header/Header'
 import Home from './Pages/Home'
 import ShoppingCart from './Pages/ShoppingCart'
 import ProductDetail from './Pages/ProductDetail'
+import { GlobalStyle } from './GlobalStyles'
 
 const App = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
+      <GlobalStyle />
       <div className='app-wrapper'>
         <Header />
         <main className='app-main'>

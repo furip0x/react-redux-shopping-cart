@@ -1,7 +1,17 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCartItem, getTotals } from '../../slices/productsSlice'
+import { addCartItem, getTotals } from '../../../slices/productsSlice'
+import {
+  Wrapper,
+  Item,
+  ImageWrapper,
+  ImageOverlay,
+  Details,
+  Title,
+  Price,
+  AddToCartBtn,
+} from './ProductListItem.styles'
 
 const ProductItem = () => {
   const dispatch = useDispatch()
@@ -18,27 +28,23 @@ const ProductItem = () => {
 
   return products.map((product) => {
     return (
-      <div className='product-list-item' key={product.id}>
-        <div className='product-list-item-img'>
+      <Item key={product.id}>
+        <ImageWrapper>
           <Link to={`/product/${product.id}`}>
             <img src={product.image} alt={product.name} />
-            <div className='image-overlay'>see details</div>
+            <ImageOverlay>see details</ImageOverlay>
           </Link>
-        </div>
-        <div className='product-list-item-detail'>
+        </ImageWrapper>
+        <Details>
           <Link to={`/product/${product.id}`}>
-            <h2 className='product-list-item-title'>{product.name}</h2>
-            <div className='product-list-item-price'>${product.price}</div>
+            <Title>{product.name}</Title>
+            <Price>${product.price}</Price>
           </Link>
-          <button
-            className='product-list-item-btn'
-            type='button'
-            onClick={() => addToCart({ ...product })}
-          >
+          <AddToCartBtn type='button' onClick={() => addToCart({ ...product })}>
             Add to cart
-          </button>
-        </div>
-      </div>
+          </AddToCartBtn>
+        </Details>
+      </Item>
     )
   })
 }
