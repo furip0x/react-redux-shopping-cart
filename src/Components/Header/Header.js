@@ -1,33 +1,54 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { GlobalStyle } from '../../GlobalStyles'
+import {
+  HeaderWrapper,
+  Logo,
+  HeaderNav,
+  MainNav,
+  CartCount,
+} from './Header.styles'
 
 const Header = () => {
   const { cartTotalQuantity } = useSelector((state) => state.products)
 
   return (
-    <header className='main-header'>
+    <HeaderWrapper>
+      <GlobalStyle />
       <div className='container'>
-        <div className='logo'>
-          <Link to='/'>Mini Shop</Link>
-        </div>
-        <div className='header-nav'>
-          <nav className='main-nav'>
+        <Logo>
+          <NavLink to='/' activeClassName='current' exact>
+            Mini Shop
+          </NavLink>
+        </Logo>
+        <HeaderNav>
+          <MainNav>
             <ul>
               <li>
-                <Link to='/' className='main-nav-link'>
+                <NavLink
+                  to='/'
+                  className='main-nav-link'
+                  activeClassName='current'
+                  exact
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to='/cart' className='main-nav-link'>
+                <NavLink
+                  to='/cart'
+                  className='main-nav-link'
+                  activeClassName='current'
+                  exact
+                >
                   My Cart
-                </Link>
+                </NavLink>
               </li>
             </ul>
-          </nav>
-          <div className='cart-count'>
-            <Link to='/cart'>
+          </MainNav>
+          <CartCount>
+            <NavLink to='/cart' activeClassName='current' exact>
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'>
                 <path
                   fill='currentColor'
@@ -35,11 +56,11 @@ const Header = () => {
                 ></path>
               </svg>
               <div className='amount-container'>{cartTotalQuantity}</div>
-            </Link>
-          </div>
-        </div>
+            </NavLink>
+          </CartCount>
+        </HeaderNav>
       </div>
-    </header>
+    </HeaderWrapper>
   )
 }
 
