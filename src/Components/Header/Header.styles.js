@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 5;
   background-color: #f05455;
-  padding: 0.63rem 0;
+  padding: 0.3rem 0;
 
   .container {
     display: flex;
@@ -33,6 +36,7 @@ export const HeaderNav = styled.div`
   justify-content: flex-end;
   gap: 1.5rem;
 `
+
 export const MainNav = styled.nav`
   ul {
     display: flex;
@@ -64,11 +68,12 @@ export const MainNav = styled.nav`
     }
   }
 `
+
 export const CartCount = styled.div`
   position: relative;
 
   svg {
-    width: 2rem;
+    width: 1.7rem;
     color: #fff;
     transition: 0.3s;
   }
@@ -81,13 +86,12 @@ export const CartCount = styled.div`
     position: absolute;
     top: -0.85rem;
     right: -0.85rem;
-    width: 1.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 1.75rem;
-    font-size: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
     color: #fff;
+    text-align: center;
     border-radius: 50%;
     background: #720304;
     transition: 0.3s;
