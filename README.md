@@ -8,6 +8,7 @@
 - React
 - Redux Toolkit
 - React-toastify
+- Styled Components
 
 [Live Demo](https://furip0x.github.io/react-redux-shopping-cart/) :point_left:
 
