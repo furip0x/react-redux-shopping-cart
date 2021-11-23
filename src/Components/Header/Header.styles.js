@@ -48,14 +48,9 @@ export const MainNav = styled.nav`
     padding: 0.3rem 0.6rem;
     transition: 0.3s;
 
-    &.current::after {
-      content: '';
-      position: absolute;
-      right: 0.6rem;
-      left: 0.6rem;
-      bottom: -0.2rem;
-      border-top: 0.2rem solid #720304;
-      border-radius: 0.3rem;
+    &.current {
+      color: #bf080a;
+      background-color: #fff;
     }
   }
 

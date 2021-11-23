@@ -27,7 +27,7 @@ export const ImageWrapper = styled.div`
   flex: 0 0 50px;
 `
 
-export const Image = styled.div`
+export const Image = styled.img`
   width: 100%;
 
   @media (max-width: 575px) {
@@ -40,10 +40,11 @@ export const Details = styled.div`
 `
 
 export const Title = styled.h2`
-  flex: 1 1 auto;
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
 `
 
-export const Price = styled.h2`
+export const Price = styled.div`
   font-size: 1.1rem;
   font-weight: 700;
   color: #8b8b8b;
