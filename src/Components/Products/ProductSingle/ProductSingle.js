@@ -7,7 +7,6 @@ import {
   decreaseItemQuantity,
   getTotals,
 } from '../../../slices/productsSlice'
-import { GlobalStyle } from '../../../GlobalStyles'
 import {
   PageWrapper,
   ProductDetail,
@@ -45,7 +44,6 @@ const ProductSingle = () => {
 
   return (
     <PageWrapper>
-      <GlobalStyle />
       <div className='container'>
         <div className='page-top'>
           <h1 className='page-title'>{singleProduct.name}</h1>

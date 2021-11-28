@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { GlobalStyle } from '../../GlobalStyles'
 import {
   HeaderWrapper,
   Logo,
@@ -15,7 +14,6 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <GlobalStyle />
       <div className='container'>
         <Logo>
           <NavLink to='/' activeClassName='current' exact>
