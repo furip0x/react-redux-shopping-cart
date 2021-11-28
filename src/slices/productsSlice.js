@@ -20,11 +20,11 @@ const productsSlice = createSlice({
 
       if (itemIndex >= 0) {
         state.cart[itemIndex].quantity += 1
-        toast.success('Item successfully added')
+        toast.success(`${state.cart[itemIndex].name} added to cart`)
       } else {
         const newCartItem = { ...action.payload, quantity: 1 }
         state.cart.push(newCartItem)
-        toast.success('Item successfully added')
+        toast.success(`${action.payload.name} added to cart`)
       }
     },
     deleteCartItem: (state, action) => {
