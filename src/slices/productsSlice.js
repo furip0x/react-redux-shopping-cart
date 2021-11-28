@@ -4,7 +4,9 @@ import { data } from '../data'
 
 const initialState = {
   productData: data,
-  cart: [],
+  cart: localStorage.getItem('cartItems')
+    ? JSON.parse(localStorage.getItem('cartItems'))
+    : [],
   cartTotalQuantity: 0,
   cartTotalPrice: 0,
 }
@@ -26,6 +28,8 @@ const productsSlice = createSlice({
         state.cart.push(newCartItem)
         toast.success(`${action.payload.name} added to cart`)
       }
+
+      localStorage.setItem('cartItems', JSON.stringify(state.cart))
     },
     deleteCartItem: (state, action) => {
       const newCart = state.cart.filter((item) => item.id !== action.payload)

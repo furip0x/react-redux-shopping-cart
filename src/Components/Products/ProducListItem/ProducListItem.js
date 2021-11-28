@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+// import { useHistory } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 import { addCartItem, getTotals } from '../../../slices/productsSlice'
 import {
@@ -17,6 +18,7 @@ const ProductItem = () => {
   const dispatch = useDispatch()
   const products = useSelector((state) => state.products.productData)
   const cart = useSelector((state) => state.products.cart)
+  // const history = useHistory()
 
   const addToCart = (product) => {
     dispatch(addCartItem(product))
@@ -24,6 +26,7 @@ const ProductItem = () => {
 
   useEffect(() => {
     dispatch(getTotals())
+    // history.push('/cart')
   }, [cart])
 
   return products.map((product) => {
