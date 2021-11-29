@@ -36,36 +36,47 @@ const productsSlice = createSlice({
 
       state.cart = newCart
       toast.error('Item successfully removed')
+
+      localStorage.setItem('cartItems', JSON.stringify(state.cart))
     },
     clearCart: (state, action) => {
       toast.success('Shopping cart cleared')
+      localStorage.setItem('cartItems', JSON.stringify([]))
       return {
         ...state,
         cart: [],
       }
     },
     increaseItemQuantity: (state, action) => {
-      return {
-        ...state,
-        cart: state.cart.map((item) => {
-          if (item.id === action.payload) {
-            return { ...item, quantity: item.quantity + 1 }
-          }
-          return item
-        }),
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === action.payload
+      )
+
+      if (itemIndex >= 0) {
+        state.cart[itemIndex].quantity += 1
+        localStorage.setItem('cartItems', JSON.stringify(state.cart))
       }
+
+      // return { Keeping this an an example
+      //   ...state,
+      //   cart: state.cart.map((item) => {
+      //     if (item.id === itemIndex) {
+      //       return { ...item, quantity: item.quantity + 1 }
+      //     }
+      //     return item
+      //   }),
+      // }
     },
     decreaseItemQuantity: (state, action) => {
-      return {
-        ...state,
-        cart: state.cart
-          .map((item) => {
-            if (item.id === action.payload) {
-              return { ...item, quantity: item.quantity - 1 }
-            }
-            return item
-          })
-          .filter((item) => item.quantity !== 0),
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === action.payload
+      )
+
+      if (itemIndex >= 0) {
+        if (state.cart[itemIndex].quantity !== 0) {
+          state.cart[itemIndex].quantity -= 1
+        }
+        localStorage.setItem('cartItems', JSON.stringify(state.cart))
       }
     },
     getTotals: (state, action) => {
