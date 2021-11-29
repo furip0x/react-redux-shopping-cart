@@ -19,8 +19,7 @@ import {
 import {
   clearCart,
   deleteCartItem,
-  increaseItemQuantity,
-  decreaseItemQuantity,
+  setItemQuantity,
   getTotals,
 } from '../../slices/productsSlice'
 
@@ -35,14 +34,6 @@ const Cart = () => {
 
   const removeItemFromCart = (id) => {
     dispatch(deleteCartItem(id))
-  }
-
-  const increaseQuantity = (id) => {
-    dispatch(increaseItemQuantity(id))
-  }
-
-  const decreaseQuantity = (id) => {
-    dispatch(decreaseItemQuantity(id))
   }
 
   useEffect(() => {
@@ -72,7 +63,11 @@ const Cart = () => {
                       <button
                         className='cart-item-count-btn'
                         type='button'
-                        onClick={() => decreaseQuantity(item.id)}
+                        onClick={() =>
+                          dispatch(
+                            setItemQuantity({ id: item.id, type: 'dec' })
+                          )
+                        }
                       >
                         -
                       </button>
@@ -80,7 +75,11 @@ const Cart = () => {
                       <button
                         className='cart-item-count-btn'
                         type='button'
-                        onClick={() => increaseQuantity(item.id)}
+                        onClick={() =>
+                          dispatch(
+                            setItemQuantity({ id: item.id, type: 'inc' })
+                          )
+                        }
                       >
                         +
                       </button>

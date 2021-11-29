@@ -42,20 +42,30 @@ const productsSlice = createSlice({
     clearCart: (state, action) => {
       toast.success('Shopping cart cleared')
       localStorage.setItem('cartItems', JSON.stringify([]))
+
       return {
         ...state,
         cart: [],
       }
     },
-    increaseItemQuantity: (state, action) => {
+    setItemQuantity: (state, action) => {
       const itemIndex = state.cart.findIndex(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload.id
       )
 
-      if (itemIndex >= 0) {
+      if (action.payload.type === 'dec') {
+        if (state.cart[itemIndex].quantity === 1) {
+          return {
+            ...state,
+            cart: state.cart.filter((item) => item.id !== action.payload.id),
+          }
+        }
+        state.cart[itemIndex].quantity -= 1
+      } else {
         state.cart[itemIndex].quantity += 1
-        localStorage.setItem('cartItems', JSON.stringify(state.cart))
       }
+
+      localStorage.setItem('cartItems', JSON.stringify(state.cart))
 
       // return { Keeping this an an example
       //   ...state,
@@ -66,18 +76,6 @@ const productsSlice = createSlice({
       //     return item
       //   }),
       // }
-    },
-    decreaseItemQuantity: (state, action) => {
-      const itemIndex = state.cart.findIndex(
-        (item) => item.id === action.payload
-      )
-
-      if (itemIndex >= 0) {
-        if (state.cart[itemIndex].quantity !== 0) {
-          state.cart[itemIndex].quantity -= 1
-        }
-        localStorage.setItem('cartItems', JSON.stringify(state.cart))
-      }
     },
     getTotals: (state, action) => {
       let { totalPrice, totalQuantity } = state.cart.reduce(
@@ -102,8 +100,7 @@ const productsSlice = createSlice({
 export const {
   addCartItem,
   deleteCartItem,
-  increaseItemQuantity,
-  decreaseItemQuantity,
+  setItemQuantity,
   clearCart,
   getTotals,
 } = productsSlice.actions

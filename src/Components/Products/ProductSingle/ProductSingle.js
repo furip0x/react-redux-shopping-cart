@@ -3,8 +3,7 @@ import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   addCartItem,
-  increaseItemQuantity,
-  decreaseItemQuantity,
+  setItemQuantity,
   getTotals,
 } from '../../../slices/productsSlice'
 import {
@@ -30,14 +29,6 @@ const ProductSingle = () => {
     dispatch(addCartItem(product))
   }
 
-  const increaseQuantity = (id) => {
-    dispatch(increaseItemQuantity(id))
-  }
-
-  const decreaseQuantity = (id) => {
-    dispatch(decreaseItemQuantity(id))
-  }
-
   useEffect(() => {
     dispatch(getTotals())
   }, [cart])
@@ -57,7 +48,11 @@ const ProductSingle = () => {
                     <button
                       className='cart-item-count-btn'
                       type='button'
-                      onClick={() => decreaseQuantity(cartItem.id)}
+                      onClick={() =>
+                        dispatch(
+                          setItemQuantity({ id: cartItem.id, type: 'dec' })
+                        )
+                      }
                     >
                       -
                     </button>
@@ -65,7 +60,11 @@ const ProductSingle = () => {
                     <button
                       className='cart-item-count-btn'
                       type='button'
-                      onClick={() => increaseQuantity(cartItem.id)}
+                      onClick={() =>
+                        dispatch(
+                          setItemQuantity({ id: cartItem.id, type: 'inc' })
+                        )
+                      }
                     >
                       +
                     </button>
