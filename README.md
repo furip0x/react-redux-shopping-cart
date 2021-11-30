@@ -9,6 +9,7 @@
 - Redux Toolkit
 - React-toastify
 - Styled Components
+- Local Storage
 
 [Live Demo](https://furip0x.github.io/react-redux-shopping-cart/) :point_left:
 
